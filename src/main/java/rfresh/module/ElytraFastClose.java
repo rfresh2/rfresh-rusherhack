@@ -21,8 +21,8 @@ public class ElytraFastClose extends ToggleableModule {
 
     @Subscribe(stage = Stage.PRE)
     public void onPlayerUpdate(final EventPlayerUpdate event) {
-        if (!mc.player.isFallFlying()) return;
-        if (mc.level.noCollision(mc.player, mc.player.getBoundingBox().move(0.0, -yThreshold.getValue(), 0.0))) return;
+        if (!event.getPlayer().isFallFlying()) return;
+        if (mc.level.noCollision(event.getPlayer(), event.getPlayer().getBoundingBox().move(0.0, -yThreshold.getValue(), 0.0))) return;
         // force server to teleport us back and make us lose momentum
         event.setY(event.getY() + 100);
         event.setOnGround(true);
