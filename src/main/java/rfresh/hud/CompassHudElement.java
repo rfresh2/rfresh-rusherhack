@@ -1,15 +1,11 @@
 package rfresh.hud;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
 import net.minecraft.util.Mth;
 import org.rusherhack.client.api.feature.hud.ResizeableHudElement;
 import org.rusherhack.client.api.render.RenderContext;
 import org.rusherhack.core.setting.BooleanSetting;
 import org.rusherhack.core.utils.MathUtils;
-
-import java.awt.*;
 
 public class CompassHudElement extends ResizeableHudElement {
 
@@ -44,9 +40,7 @@ public class CompassHudElement extends ResizeableHudElement {
             // lol there's definitely a more sane way to select these numbers
             context.graphics().pose().scale(1.5f, 1.5f, 0f);
             context.pose().translate((getWidth() / 3) + getX(rad) - (getFontRenderer().getStringWidth(dir.name())), (getHeight() / 3) + getY(rad) - (getFontRenderer().getFontHeight()), 0.0);
-            var textComponent = Component.literal(axis.getValue() ? dir.getAxis() : dir.name());
-            textComponent.setStyle(dir == Direction.N ? Style.EMPTY.withColor(ChatFormatting.RED) : Style.EMPTY.withColor(ChatFormatting.WHITE));
-            context.graphics().drawString(mc.font, textComponent, 0, 0, new Color(255, 255, 255).getRGB());
+            getFontRenderer().drawString(axis.getValue() ? dir.getAxis() : dir.name(), 0, 0, dir == Direction.N ? ChatFormatting.RED.getColor() : ChatFormatting.WHITE.getColor());
             context.pose().popPose();
         }
     }
