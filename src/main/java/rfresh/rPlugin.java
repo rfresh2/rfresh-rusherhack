@@ -3,6 +3,7 @@ package rfresh;
 import org.rusherhack.client.api.RusherHackAPI;
 import org.rusherhack.client.api.plugin.Plugin;
 import rfresh.hud.CompassHudElement;
+import rfresh.module.DragMove;
 import rfresh.module.QuickMove;
 
 public class rPlugin extends Plugin {
@@ -11,6 +12,7 @@ public class rPlugin extends Plugin {
         getLogger().info("rfresh plugin loaded");
         RusherHackAPI.getHudManager().registerFeature(new CompassHudElement());
         RusherHackAPI.getModuleManager().registerFeature(new QuickMove());
+        RusherHackAPI.getModuleManager().registerFeature(new DragMove());
     }
 
     @Override

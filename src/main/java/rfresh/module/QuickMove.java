@@ -30,7 +30,6 @@ public class QuickMove extends ToggleableModule {
             if (hoveredSlot == null) return;
             ItemStack mouseStack = mc.player.containerMenu.getCarried();
             if (mouseStack.isEmpty()) {
-                getLogger().info("click1");
                 InventoryUtils.clickSlot(hoveredSlot.index, false);
                 mouseStack = mc.player.containerMenu.getCarried();
             }
