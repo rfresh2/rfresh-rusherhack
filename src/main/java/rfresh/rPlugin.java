@@ -3,11 +3,13 @@ package rfresh;
 import org.rusherhack.client.api.RusherHackAPI;
 import org.rusherhack.client.api.plugin.Plugin;
 import rfresh.hud.CompassHudElement;
+import rfresh.module.ElytraFastClose;
 
 public class rPlugin extends Plugin {
     @Override
     public void onLoad() {
         RusherHackAPI.getHudManager().registerFeature(new CompassHudElement());
+        RusherHackAPI.getModuleManager().registerFeature(new ElytraFastClose());
         getLogger().info("rfresh plugin loaded");
     }
 
