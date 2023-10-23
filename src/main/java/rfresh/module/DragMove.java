@@ -6,20 +6,25 @@ import org.lwjgl.glfw.GLFW;
 import org.rusherhack.client.api.RusherHackAPI;
 import org.rusherhack.client.api.accessors.gui.IMixinAbstractContainerScreen;
 import org.rusherhack.client.api.events.client.input.EventMouse;
-import org.rusherhack.client.api.feature.module.Module;
 import org.rusherhack.client.api.feature.module.ModuleCategory;
+import org.rusherhack.client.api.feature.module.ToggleableModule;
 import org.rusherhack.client.api.setting.BindSetting;
 import org.rusherhack.client.api.utils.InventoryUtils;
 import org.rusherhack.core.event.stage.Stage;
 import org.rusherhack.core.event.subscribe.Subscribe;
 
-public class DragMove extends Module {
+public class DragMove extends ToggleableModule {
     final BindSetting dragMoveBind = new BindSetting("HoldKey", RusherHackAPI.getBindManager().parseKey("LEFT_SHIFT"));
     private boolean dragging = false;
 
     public DragMove() {
         super("DragMove", "Quick move items while dragging in the inventory", ModuleCategory.MISC);
         registerSettings(dragMoveBind);
+    }
+
+    @Override
+    public void onDisable() {
+        dragging = false;
     }
 
     @Subscribe
