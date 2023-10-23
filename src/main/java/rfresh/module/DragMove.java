@@ -39,11 +39,10 @@ public class DragMove extends ToggleableModule {
 
     @Subscribe(stage = Stage.PRE)
     public void onMouseClick(final EventMouse.Key event) {
-        if (event.getButton() == 0) {
-            switch (event.getAction()) {
-                case GLFW.GLFW_PRESS -> dragging = true;
-                case GLFW.GLFW_RELEASE -> dragging = false;
-            }
+        if (event.getButton() != 0) return;
+        switch (event.getAction()) {
+            case GLFW.GLFW_PRESS -> dragging = true;
+            case GLFW.GLFW_RELEASE -> dragging = false;
         }
     }
 }
