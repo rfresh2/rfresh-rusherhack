@@ -1,3 +1,14 @@
 {
-  "Plugin-Class": "rfresh.rPlugin"
+  "Plugin-Class": "rfresh.rPlugin",
+  "Name": "rfresh",
+  "Version": "${mod_version}",
+  "Description": "testing random stuff",
+  "Authors": [
+    "rfresh2"
+  ],
+  "Minecraft-Versions": [
+    "1.20.1",
+    "1.20.2",
+    "1.20.4"
+  ]
 }

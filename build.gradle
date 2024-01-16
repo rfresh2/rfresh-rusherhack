@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.2-SNAPSHOT'
+	id 'fabric-loom' version '1.5-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -25,24 +25,29 @@ repositories {
 		//url = "https://maven.rusherhack.org/releases"
 		url = "https://maven.rusherhack.org/snapshots"
 	}
-
 	maven {
 		name = 'ParchmentMC'
 		url = 'https://maven.parchmentmc.org'
+	}
+	maven {
+		name = "Modrinth"
+		url = "https://api.modrinth.com/maven"
+	}
+	maven {
+		name = "jitpack.io"
+		url = "https://jitpack.io"
 	}
 }
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-
 	//mojmap + parchment mappings
 	mappings loom.layered() {
 		officialMojangMappings()
-		parchment("org.parchmentmc.data:parchment-1.20.1:2023.07.30@zip")
+		parchment("org.parchmentmc.data:parchment-1.20.3:2023.12.31@zip")
 	}
-
-	//rusherhack api
-	rusherhackApi "org.rusherhack:rusherhack-api:1.20.1-SNAPSHOT"
+	rusherhackApi "org.rusherhack:rusherhack-api:1.20.4-SNAPSHOT"
+	modImplementation "maven.modrinth:xaeroplus:T9D9sNTg"
 }
 
 loom {
@@ -86,5 +91,13 @@ jar {
 		attributes(
 				"Minecraft-Version": project.minecraft_version
 		)
+	}
+}
+
+processResources {
+	inputs.property "mod_version", project.mod_version
+
+	filesMatching("rusherhack-plugin.json") {
+		expand(mod_version: project.mod_version)
 	}
 }

@@ -10,6 +10,8 @@ public class rPlugin extends Plugin {
     public void onLoad() {
         RusherHackAPI.getHudManager().registerFeature(new CompassHudElement());
         RusherHackAPI.getModuleManager().registerFeature(new ElytraFastClose());
+        // currently sucks ass
+//        RusherHackAPI.getModuleManager().registerFeature(new XaeroPlusIntegration());
         getLogger().info("rfresh plugin loaded");
     }
 
